@@ -1,3 +1,7 @@
+### mapper01
+
+#### Checks
+
 + Naming arguments (consistency/conventions)
 + Code style
 + Null checks
@@ -6,4 +10,4 @@
 + Generic Parameters
 + assertThat(actual).isEqualTo(expected);
 + Guava Test Library - NullPointerTester
-+ We don't have to use Spring Stereotype Annotations or JSR-330 or even your own meta "qualifier" annotations
++ Spring dependency, we don't have to use Spring Stereotype Annotations, use JSR-330 or even your own meta "qualifier" annotations
