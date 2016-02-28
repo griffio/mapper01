@@ -1,10 +1,11 @@
 package griffio.person;
 
 import com.google.common.testing.NullPointerTester;
-import com.google.common.truth.Truth;
 import java.time.LocalDate;
 import java.util.List;
 import org.testng.annotations.Test;
+
+import static com.google.common.truth.Truth.assertThat;
 
 public class PersonTest {
 
@@ -20,9 +21,9 @@ public class PersonTest {
 
     Person actual = new Person(fullName, dateOfBirth, gender, addresses);
 
-    Truth.assertThat(actual.getFullName()).isEqualTo(fullName);
-    Truth.assertThat(actual.getDateOfBirth()).isEqualTo(dateOfBirth);
-    Truth.assertThat(actual.getGender()).isEqualTo(gender);
-    Truth.assertThat(actual.getAddresses()).isNotEmpty();
+    assertThat(actual.getFullName()).isEqualTo(fullName);
+    assertThat(actual.getDateOfBirth()).isEqualTo(dateOfBirth);
+    assertThat(actual.getGender()).isEqualTo(gender);
+    assertThat(actual.getAddresses()).isNotEmpty();
   }
 }

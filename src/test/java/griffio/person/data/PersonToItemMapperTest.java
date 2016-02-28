@@ -1,7 +1,6 @@
 package griffio.person.data;
 
 import com.google.common.testing.NullPointerTester;
-import com.google.common.truth.Truth;
 import griffio.mapper.Mapper;
 import griffio.person.Address;
 import griffio.person.DataProviders;
@@ -12,6 +11,7 @@ import java.util.List;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static com.google.common.truth.Truth.assertThat;
 import static java.time.format.DateTimeFormatter.ISO_LOCAL_DATE;
 
 public class PersonToItemMapperTest {
@@ -31,14 +31,13 @@ public class PersonToItemMapperTest {
 
     PersonItem expected = mapper.map(actual);
 
-    Truth.assertThat(actual.getFullName()).isEqualTo(expected.getFullName());
+    assertThat(actual.getFullName()).isEqualTo(expected.getFullName());
 
-    Truth.assertThat(actual.getDateOfBirth().format(ISO_LOCAL_DATE))
-        .isEqualTo(expected.getDateOfBirth());
+    assertThat(actual.getDateOfBirth().format(ISO_LOCAL_DATE)).isEqualTo(expected.getDateOfBirth());
 
-    Truth.assertThat(actual.getGender().toString()).isEqualTo(expected.getGender());
+    assertThat(actual.getGender().toString()).isEqualTo(expected.getGender());
 
-    Truth.assertThat(actual.getAddresses()).isNotEmpty();
+    assertThat(actual.getAddresses()).isNotEmpty();
   }
 
   @Test
@@ -46,7 +45,7 @@ public class PersonToItemMapperTest {
 
     PersonItem actual = mapper.map(null);
 
-    Truth.assertThat(actual).isNull();
+    assertThat(actual).isNull();
   }
 
   @Test
