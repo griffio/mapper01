@@ -1,24 +1,42 @@
 package griffio.person;
 
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 import javax.annotation.Nonnull;
 
-public class Person implements Comparable<Person> {
+public class Person {
 
   private final String fullName;
+  private final LocalDate dateOfBirth;
+  private final Gender gender;
+  private final List<Address> addresses;
 
-  public Person(@Nonnull String fullName) {
+  public Person(@Nonnull String fullName, @Nonnull LocalDate dateOfBirth, @Nonnull Gender gender,
+      @Nonnull List<Address> addresses) {
     Objects.requireNonNull(fullName, "fullName argument is null");
+    Objects.requireNonNull(dateOfBirth, "dateOfBirth argument is null");
+    Objects.requireNonNull(gender, "gender argument is null");
+    Objects.requireNonNull(addresses, "addresses argument is null");
     this.fullName = fullName;
+    this.dateOfBirth = dateOfBirth;
+    this.gender = gender;
+    this.addresses = addresses;
   }
 
   public String getFullName() {
     return this.fullName;
   }
 
-  @Override public int compareTo(@Nonnull Person other) {
+  public LocalDate getDateOfBirth() {
+    return dateOfBirth;
+  }
 
-    Objects.requireNonNull(other, "person argument is null");
-    return this.fullName.compareTo(other.fullName);
+  public Gender getGender() {
+    return gender;
+  }
+
+  public List<Address> getAddresses() {
+    return addresses;
   }
 }

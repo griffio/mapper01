@@ -2,6 +2,8 @@ package griffio.person;
 
 import com.google.common.testing.NullPointerTester;
 import com.google.common.truth.Truth;
+import java.time.LocalDate;
+import java.util.Collections;
 import org.testng.annotations.Test;
 
 public class PersonTest {
@@ -12,13 +14,14 @@ public class PersonTest {
     new NullPointerTester().testAllPublicConstructors(Person.class);
   }
 
-  @Test
-  public void fullName_must_be_equivalent() {
+  @Test(dataProvider = "person", dataProviderClass = PersonProvider.class)
+  public void person_must_be_equivalent(String fullName, LocalDate dateOfBirth, Gender gender) {
 
-    String expected = "Phileas Fog";
+    Person actual = new Person(fullName, dateOfBirth, gender, Collections.<Address>emptyList());
 
-    Person actual = new Person(expected);
-
-    Truth.assertThat(expected).isEqualTo(actual.getFullName());
+    Truth.assertThat(actual.getFullName()).isEqualTo(fullName);
+    Truth.assertThat(actual.getDateOfBirth()).isEqualTo(dateOfBirth);
+    Truth.assertThat(actual.getGender()).isEqualTo(gender);
+    Truth.assertThat(actual.getAddresses()).isEmpty();
   }
 }
