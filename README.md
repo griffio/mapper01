@@ -12,3 +12,4 @@
 + Data providers - separate the test data from test methods, reuse
 + Guava Test Library - NullPointerTester
 + Spring dependency, we don't have to use Spring Stereotype Annotations, use JSR-330 or even your own meta "qualifier" annotations
++ Domain modelling, "tiny types" e.g Postcode(valid) DateOfBirth(iso toString)
