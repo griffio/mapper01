@@ -2,13 +2,15 @@ package griffio.person;
 
 import java.util.Objects;
 import javax.annotation.Nonnull;
+import javax.annotation.concurrent.Immutable;
 
+@Immutable
 public class Address {
 
-  private String line1;
-  private String townOrCity;
-  private String county;
-  private String postCode;
+  private final String line1;
+  private final String townOrCity;
+  private final String county;
+  private final String postCode;
 
   public Address(@Nonnull String line1, @Nonnull String townOrCity, @Nonnull String county,
       @Nonnull String postCode) {

@@ -1,14 +1,24 @@
 package griffio.person.data;
 
 import griffio.mapper.Mapper;
+import griffio.person.Address;
 import griffio.person.Person;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 import javax.annotation.Nullable;
+import javax.inject.Inject;
 import javax.inject.Named;
+
+import static java.util.stream.Collectors.toList;
 
 @Named("personToItemMapper")
 public class PersonToItemMapper implements Mapper<Person, PersonItem> {
 
-  public PersonToItemMapper() {
+  private final Mapper<Address, AddressItem> addressMapper;
+
+  @Inject
+  public PersonToItemMapper(Mapper<Address, AddressItem> addressMapper) {
+    this.addressMapper = addressMapper;
   }
 
   @Override
@@ -18,10 +28,16 @@ public class PersonToItemMapper implements Mapper<Person, PersonItem> {
       return null;
     }
 
-    PersonItem item = new PersonItem();
-    //BeanUtils.copyProperties(person, item); we could use reflection but could be brittle if Person changes in the future
-    item.setFullName(person.getFullName());
+    PersonItem personItem = new PersonItem();
+    personItem.setFullName(person.getFullName());
+    personItem.setDateOfBirth(person.getDateOfBirth().format(DateTimeFormatter.ISO_LOCAL_DATE));
+    personItem.setGender(person.getGender().toString());
 
-    return item;
+    List<AddressItem> addressItems;
+    addressItems = person.getAddresses().stream().map(addressMapper::map).collect(toList());
+
+    personItem.setAddressItems(addressItems);
+
+    return personItem;
   }
 }

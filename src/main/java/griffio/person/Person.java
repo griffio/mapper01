@@ -1,10 +1,13 @@
 package griffio.person;
 
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import javax.annotation.Nonnull;
+import javax.annotation.concurrent.Immutable;
 
+@Immutable
 public class Person {
 
   private final String fullName;
@@ -21,7 +24,7 @@ public class Person {
     this.fullName = fullName;
     this.dateOfBirth = dateOfBirth;
     this.gender = gender;
-    this.addresses = addresses;
+    this.addresses = Collections.unmodifiableList(addresses);
   }
 
   public String getFullName() {

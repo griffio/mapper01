@@ -4,13 +4,15 @@ import com.google.common.testing.NullPointerTester;
 import com.google.common.truth.Truth;
 import griffio.mapper.Mapper;
 import griffio.person.Address;
+import griffio.person.DataProviders;
 import griffio.person.Gender;
 import griffio.person.Person;
-import griffio.person.PersonProvider;
 import java.time.LocalDate;
-import java.util.Collections;
+import java.util.List;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import static java.time.format.DateTimeFormatter.ISO_LOCAL_DATE;
 
 public class PersonToItemMapperTest {
 
@@ -18,29 +20,29 @@ public class PersonToItemMapperTest {
 
   @BeforeMethod
   public void setUp() {
-    mapper = new PersonToItemMapper();
+    mapper = new PersonToItemMapper(new AddressToAddressItemMapper());
   }
 
-  @Test(dataProvider = "person", dataProviderClass = PersonProvider.class)
-  public void person_item_must_be_equivalent(String fullName, LocalDate dateOfBirth, Gender gender) {
+  @Test(dataProvider = "person", dataProviderClass = DataProviders.class)
+  public void person_item_must_be_equivalent(String fullName, LocalDate dateOfBirth, Gender gender,
+      List<Address> addresses) {
 
-    Person actual = new Person(fullName, dateOfBirth, gender, Collections.<Address>emptyList());
+    Person actual = new Person(fullName, dateOfBirth, gender, addresses);
 
     PersonItem expected = mapper.map(actual);
 
     Truth.assertThat(actual.getFullName()).isEqualTo(expected.getFullName());
 
-    Truth.assertThat(actual.getDateOfBirth()).isEqualTo(expected.getDateOfBirth());
+    Truth.assertThat(actual.getDateOfBirth().format(ISO_LOCAL_DATE))
+        .isEqualTo(expected.getDateOfBirth());
 
-    Truth.assertThat(actual.getGender()).isEqualTo(expected.getGender());
+    Truth.assertThat(actual.getGender().toString()).isEqualTo(expected.getGender());
 
-    Truth.assertThat(actual.getAddresses()).isEmpty();
+    Truth.assertThat(actual.getAddresses()).isNotEmpty();
   }
 
   @Test
   public void person_item_must_be_null() {
-
-    Mapper<Person, PersonItem> mapper = new PersonToItemMapper();
 
     PersonItem actual = mapper.map(null);
 

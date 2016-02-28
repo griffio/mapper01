@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 public class PersonItemTest {
 
   @Test
-  public void person_item_mapper_must_be_nullable() {
+  public void person_item_mapper_must_be_non_nullable() {
 
     new NullPointerTester().testAllPublicInstanceMethods(new PersonItem());
   }
