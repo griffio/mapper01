@@ -17,6 +17,7 @@ public class Person implements Comparable<Person> {
   }
 
   @Override public int compareTo(@Nonnull Person other) {
+
     Objects.requireNonNull(other, "person argument is null");
     return this.fullName.compareTo(other.fullName);
   }

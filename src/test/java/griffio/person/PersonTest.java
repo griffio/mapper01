@@ -20,6 +20,5 @@ public class PersonTest {
     Person actual = new Person(expected);
 
     Truth.assertThat(expected).isEqualTo(actual.getFullName());
-
   }
 }

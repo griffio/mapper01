@@ -1,7 +1,6 @@
-package griffio.data;
+package griffio.person.data;
 
 import com.google.common.testing.NullPointerTester;
-import griffio.person.data.PersonItem;
 import org.testng.annotations.Test;
 
 public class PersonItemTest {
@@ -10,7 +9,5 @@ public class PersonItemTest {
   public void person_item_mapper_must_be_nullable() {
 
     new NullPointerTester().testAllPublicInstanceMethods(new PersonItem());
-
   }
-
 }

@@ -12,6 +12,7 @@ public class PersonItem {
   }
 
   public void setFullName(@Nonnull String fullName) {
+
     Objects.requireNonNull(fullName, "fullName must not be null");
     this.fullName = fullName;
   }

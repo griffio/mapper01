@@ -24,5 +24,4 @@ public class PersonToItemMapper implements Mapper<Person, PersonItem> {
 
     return item;
   }
-
 }

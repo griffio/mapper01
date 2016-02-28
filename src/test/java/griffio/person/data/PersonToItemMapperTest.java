@@ -1,11 +1,9 @@
-package griffio.data;
+package griffio.person.data;
 
 import com.google.common.testing.NullPointerTester;
 import com.google.common.truth.Truth;
 import griffio.mapper.Mapper;
 import griffio.person.Person;
-import griffio.person.data.PersonItem;
-import griffio.person.data.PersonToItemMapper;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
