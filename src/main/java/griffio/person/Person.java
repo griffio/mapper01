@@ -1,6 +1,5 @@
 package griffio.person;
 
-import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -11,11 +10,11 @@ import javax.annotation.concurrent.Immutable;
 public class Person {
 
   private final String fullName;
-  private final LocalDate dateOfBirth;
+  private final DateOfBirth dateOfBirth;
   private final Gender gender;
   private final List<Address> addresses;
 
-  public Person(@Nonnull String fullName, @Nonnull LocalDate dateOfBirth, @Nonnull Gender gender,
+  public Person(@Nonnull String fullName, @Nonnull DateOfBirth dateOfBirth, @Nonnull Gender gender,
       @Nonnull List<Address> addresses) {
     Objects.requireNonNull(fullName, "fullName argument is null");
     Objects.requireNonNull(dateOfBirth, "dateOfBirth argument is null");
@@ -31,7 +30,7 @@ public class Person {
     return this.fullName;
   }
 
-  public LocalDate getDateOfBirth() {
+  public DateOfBirth getDateOfBirth() {
     return dateOfBirth;
   }
 

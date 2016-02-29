@@ -1,9 +1,10 @@
 package griffio.person;
 
-import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 import org.testng.annotations.DataProvider;
+
+import static griffio.person.DateOfBirth.dateOfBirth;
 
 public class DataProviders {
 
@@ -15,9 +16,9 @@ public class DataProviders {
     List<Address> addresses = Collections.singletonList(address);
 
     return new Object[][] {
-        {"Phileas Fog", LocalDate.now(), Gender.MALE, addresses},
-        {"Passepartout", LocalDate.now(), Gender.UNSPECIFIED, addresses},
-        {"Aouda", LocalDate.now(), Gender.FEMALE, addresses},
+        {"Phileas Fog", dateOfBirth("1966-12-01"), Gender.MALE, addresses},
+        {"Passepartout", dateOfBirth("1946-11-21"), Gender.UNSPECIFIED, addresses},
+        {"Aouda", dateOfBirth("1956-10-11"), Gender.FEMALE, addresses},
     };
   }
 

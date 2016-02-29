@@ -3,7 +3,6 @@ package griffio.person.data;
 import griffio.mapper.Mapper;
 import griffio.person.Address;
 import griffio.person.Person;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import javax.annotation.Nullable;
 import javax.inject.Inject;
@@ -30,7 +29,7 @@ public class PersonToItemMapper implements Mapper<Person, PersonItem> {
 
     PersonItem personItem = new PersonItem();
     personItem.setFullName(person.getFullName());
-    personItem.setDateOfBirth(person.getDateOfBirth().format(DateTimeFormatter.ISO_LOCAL_DATE));
+    personItem.setDateOfBirth(person.getDateOfBirth().toString());
     personItem.setGender(person.getGender().toString());
 
     List<AddressItem> addressItems;

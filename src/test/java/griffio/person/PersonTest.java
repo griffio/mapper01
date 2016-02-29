@@ -12,11 +12,13 @@ public class PersonTest {
   @Test
   public void constructor_must_be_nonnull() {
 
-    new NullPointerTester().testAllPublicConstructors(Person.class);
+    new NullPointerTester()
+        .setDefault(DateOfBirth.class, DateOfBirth.dateOfBirth(LocalDate.now()))
+        .testAllPublicConstructors(Person.class);
   }
 
   @Test(dataProvider = "person", dataProviderClass = DataProviders.class)
-  public void person_must_be_equivalent(String fullName, LocalDate dateOfBirth, Gender gender,
+  public void person_must_be_equivalent(String fullName, DateOfBirth dateOfBirth, Gender gender,
       List<Address> addresses) {
 
     Person actual = new Person(fullName, dateOfBirth, gender, addresses);
