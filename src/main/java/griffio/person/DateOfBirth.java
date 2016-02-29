@@ -11,15 +11,15 @@ public final class DateOfBirth implements Comparable<DateOfBirth> {
 
   private final LocalDate localDate;
 
-  public DateOfBirth(LocalDate localDate) {
+  public DateOfBirth(@Nonnull LocalDate localDate) {
     this.localDate = localDate;
   }
 
-  public static DateOfBirth dateOfBirth(LocalDate dateOfBirth) {
+  public static DateOfBirth dateOfBirth(@Nonnull LocalDate dateOfBirth) {
     return new DateOfBirth(dateOfBirth);
   }
 
-  public static DateOfBirth dateOfBirth(String dateOfBirth) {
+  public static DateOfBirth dateOfBirth(@Nonnull String dateOfBirth) {
     return new DateOfBirth(LocalDate.parse(dateOfBirth));
   }
 
