@@ -1,5 +1,6 @@
 package griffio.person;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -23,7 +24,7 @@ public class Person {
     this.fullName = fullName;
     this.dateOfBirth = dateOfBirth;
     this.gender = gender;
-    this.addresses = Collections.unmodifiableList(addresses);
+    this.addresses = new ArrayList<>(addresses);
   }
 
   public String getFullName() {
@@ -39,6 +40,6 @@ public class Person {
   }
 
   public List<Address> getAddresses() {
-    return addresses;
+    return Collections.unmodifiableList(addresses);
   }
 }
