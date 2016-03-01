@@ -14,4 +14,5 @@
 + Guava Test Library - NullPointerTester works with @Notnull @Nullable
 + Spring - we don't have to use Spring Stereotype Annotations, use JSR-330 or even your own meta "qualifier" annotations
 + Domain modelling, "tiny types" e.g. Postcode(validate), Money(rounding), DateOfBirth(birthday, age, format)
-+ Mapper Item - Data Transfer Objects (manual). Serialize. Proto-buffer or generated classes mapping - version resilience
++ Immutable - defensive copy
++ Mapper Item - Data Transfer Objects (manual). Serialize. Proto-buffer, JSON, XML or generated classes mapping - version resilience
